@@ -83,10 +83,26 @@ class TestContinuous:
         assert conf["domain"] == [1, 10]
         json.dumps(conf)
 
-        # json-compliance: inf -> None
-        p = Continuous("x")
+        # upper bound not provided or inf
+        p = Continuous("x", domain=[0, None])
+        assert p.low == 0
+        assert np.isinf(p.high)
         conf = p.to_config()
-        assert conf["domain"] == [None, None]
+        assert conf["domain"] == [0, None]
+
+        # lower bound not provided or inf
+        p = Continuous("x", domain=[None, 0])
+        assert np.isinf(p.low)
+        assert p.high == 0
+        conf = p.to_config()
+        assert conf["domain"] == [None, 0]
+
+        # neither bound provided
+        p = Continuous("x")
+        assert np.isinf(p.low)
+        assert np.isinf(p.high)
+        conf = p.to_config()
+        assert "domain" not in conf
 
     def test_config_int32(self):
         # test if domain with np.int32 can be serialized
@@ -108,6 +124,10 @@ class TestContinuous:
         assert np.allclose(p.round(np.zeros(10)), 1)
         # pd.Series
         assert np.allclose(p.round(pd.Series([0, 0, 0])), 1)
+
+        # parameter without bounds
+        p = Continuous(name="x")
+        assert p.round(-10) == -10
 
     def test_contains(self):
         p = Continuous(name="x", domain=[1, 10])
@@ -317,6 +337,17 @@ class TestCategorical:
         untransformed = p.from_onehot_encoding(transformed)
         assert np.all(points == untransformed)
 
+    def test_dummy_encoding(self):
+        p = Categorical(name="x", domain=["B", "A", "C"])
+        points = pd.Series(["A", "A", "C", "B"])
+        transformed = p.to_dummy_encoding(points)
+        # the first level "B" is dropped
+        assert np.allclose(transformed["x§A"], [1, 1, 0, 0])
+        assert np.allclose(transformed["x§C"], [0, 0, 1, 0])
+
+        untransformed = p.from_dummy_encoding(transformed)
+        assert np.all(points == untransformed)
+
     def test_label_encoding(self):
         p = Categorical(name="x", domain=["B", "A", "C"])
         points = pd.Series(["A", "A", "C", "B"])
@@ -417,6 +448,18 @@ class TestParameters:
         rounded = self.mixed_parameters.round(points)
         assert self.mixed_parameters.contains(rounded).all()
 
+        # test rounding for unbouned parameters
+        parameters = Parameters([Continuous("x1"), Continuous("x2", [0, 10])])
+        points = pd.DataFrame(
+            {
+                "x1": [-1, 2, 999],
+                "x2": [-1, 2, 999],
+            }
+        )
+        rounded = parameters.round(points)
+        assert np.allclose(rounded["x1"], [-1, 2, 999])
+        assert np.allclose(rounded["x2"], [0, 2, 10])
+
     def test_bounds(self):
         # test parameter bounds
         params = Parameters([Continuous(f"x{i}", domain=[0, 1]) for i in range(5)])
@@ -448,9 +491,25 @@ class TestParameters:
             ]
         )
         X = params.sample(20)
-        Xt = params.transform(X, continuous="normalize", discrete="normalize")
+
+        # one-hot
+        Xt = params.transform(
+            X, continuous="normalize", discrete="normalize", categorical="onehot-encode"
+        )
         assert Xt.shape == (20, 5)
         assert np.all(Xt >= 0) and np.all(Xt <= 1)
+
+        # label-encode
+        Xt = params.transform(X, categorical="label-encode")
+        assert Xt.shape == (20, 3)
+
+        # unkown transforms
+        with pytest.raises(ValueError):
+            params.transform(X, continuous="foo")
+        with pytest.raises(ValueError):
+            params.transform(X, discrete="foo")
+        with pytest.raises(ValueError):
+            params.transform(X, categorical="foo")
 
     def test_duplicate_names(self):
         # test handling of duplicate parameter names

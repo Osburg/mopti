@@ -12,7 +12,7 @@ from opti.problem import Problem
 
 
 def test_parameters():
-    # test if inputs / outputs can be specified as list of Dimensions
+    # test if inputs / outputs can be specified as list of objects
     problem = opti.Problem(
         inputs=[opti.Continuous(f"x{i}", domain=[0, 1]) for i in range(3)],
         outputs=[opti.Continuous(f"y{i}", domain=[0, 1]) for i in range(3)],
@@ -20,7 +20,7 @@ def test_parameters():
     assert isinstance(problem.inputs, opti.Parameters)
     assert isinstance(problem.outputs, opti.Parameters)
 
-    # test if inputs / outputs can be specified as list of Dimensions
+    # test if inputs / outputs can be specified as list of dicts
     problem = opti.Problem(
         inputs=[
             {"name": "x1", "type": "continuous", "domain": [1, 10]},
@@ -35,7 +35,29 @@ def test_parameters():
     assert isinstance(problem.outputs, opti.Parameters)
 
 
-def test_problem():
+def test_properties():
+    problem = opti.Problem(
+        inputs=[opti.Continuous(f"x{i}") for i in range(10)],
+        outputs=[opti.Continuous(f"y{i}") for i in range(4)],
+        objectives=[opti.Minimize(f"y{i}") for i in range(2)],
+    )
+    assert problem.n_inputs == 10
+    assert problem.n_outputs == 4
+    assert problem.n_objectives == 2
+    assert problem.n_constraints == 0
+
+    problem = opti.Problem(
+        inputs=[opti.Continuous(f"x{i}") for i in range(10)],
+        outputs=[opti.Continuous(f"y{i}") for i in range(4)],
+        constraints=[opti.LinearEquality([f"x{i}" for i in range(10)], rhs=1)],
+    )
+    assert problem.n_inputs == 10
+    assert problem.n_outputs == 4
+    assert problem.n_objectives == 4
+    assert problem.n_constraints == 1
+
+
+def test_read_json():
     # test loading from json
     problem = opti.read_json("examples/bread.json")
     assert len(problem.inputs) == 11
@@ -222,6 +244,7 @@ def test_X_bounds():
 
 
 def test_empty_constraints():
+    # test handling of empty constraints
     problem = opti.Problem(
         inputs=[opti.Continuous("x")],
         outputs=[opti.Continuous("y")],
@@ -237,13 +260,15 @@ def test_empty_constraints():
     problem = opti.Problem.from_config(config)
     assert problem.constraints is None
 
-
-def test_eval():
-    problem = opti.problems.ZDT1(3)
-    X = problem.inputs.sample(2)
-    Y = problem.eval(X)
-    assert len(Y) == 2
-    assert (X.index == Y.index).all()
+    config = {
+        "inputs": [{"type": "continuous", "name": "x"}],
+        "outputs": [{"type": "continuous", "name": "y"}],
+        "constraints": [
+            {"names": [], "lhs": [], "rhs": 1, "type": "linear-inequality"}
+        ],
+    }
+    problem = opti.Problem.from_config(config)
+    assert problem.constraints is None
 
 
 def test_config():
@@ -251,12 +276,12 @@ def test_config():
     problem = opti.problems.Ackley()
     problem.create_initial_data(2)
     problem.data.loc[0, "y"] = np.nan
+    problem.outputs["y"].low = 0  # output domain is now [0, Inf]
 
     conf = problem.to_config()
-    # domain [-np.inf, np.inf] should be converted to [None, None]
-    assert conf["outputs"][0]["domain"][0] is None
+    # the upper bound np.inf is converted to None
     assert conf["outputs"][0]["domain"][1] is None
-    # the the datapoint y = np.nan should be converted to None
+    # the datapoint y = np.nan is converted to None
     assert conf["data"]["data"][0][-1] is None
 
 
@@ -268,15 +293,15 @@ def test_json(tmpdir):
     problem.to_json(tmpfile)
 
     # test json compliance
-    problem = opti.problems.Ackley()  # output domain is [-Inf, Inf]
+    problem = opti.problems.Ackley()
+    problem.outputs["y"].low = 0  # output domain is now [0, Inf]
     problem.to_json(tmpfile)
 
     conf = json.load(open(tmpfile))
-    assert conf["outputs"][0]["domain"][0] is None
     assert conf["outputs"][0]["domain"][1] is None
 
     problem = opti.Problem.from_json(tmpfile)
-    assert problem.outputs.bounds.loc["min", "y"] == -np.inf
+    assert problem.outputs.bounds.loc["min", "y"] == 0
     assert problem.outputs.bounds.loc["max", "y"] == np.inf
 
     # test unicode characters
@@ -290,25 +315,9 @@ def test_json(tmpdir):
     assert np.all(problem2.outputs.names == problem.outputs.names)
 
 
-def test_qritos():
-    # test if empty constraints coming from Qritos are ignored
-    problem = opti.Problem.from_config(
-        {
-            "inputs": [{"type": "continuous", "name": "x"}],
-            "outputs": [{"type": "continuous", "name": "y"}],
-            "constraints": [
-                {"names": [], "lhs": [], "rhs": 1, "type": "linear-inequality"}
-            ],
-        }
-    )
-    assert problem.constraints is None
-
-
 def test_optima():
     problem = opti.read_json("examples/simple.json")
-    front = problem.optima
-    assert len(front) == 2
-    problem.set_optima(front)
+    assert len(problem.optima) == 2
 
 
 def test_models():
@@ -322,7 +331,7 @@ def test_models():
     )
 
     X = problem.sample_inputs(10)
-    Y = problem.models.eval(X)
-    Z = problem.objectives.eval(Y)
+    Y = problem.models(X)
+    Z = problem.objectives(Y)
     assert list(Y.columns) == problem.outputs.names
     assert list(Z.columns) == problem.objectives.names

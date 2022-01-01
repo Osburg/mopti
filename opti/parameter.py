@@ -1,6 +1,6 @@
 import numbers
 import pprint
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
@@ -17,7 +17,7 @@ class Parameter:
         self.type = type
         self.extra_fields = kwargs
 
-    def to_config(self) -> Dict:
+    def to_config(self) -> dict:
         """Return a json-serializable configuration dict."""
         conf = dict(name=self.name, type=self.type, domain=self.domain)
         conf.update(self.extra_fields)
@@ -54,9 +54,9 @@ class Continuous(Parameter):
 
     def __repr__(self):
         if np.isfinite(self.low) or np.isfinite(self.high):
-            return f"Continuous(name='{self.name}', domain={self.domain})"
+            return f"Continuous('{self.name}', domain={self.domain})"
         else:
-            return f"Continuous(name='{self.name}')"
+            return f"Continuous('{self.name}')"
 
     @property
     def bounds(self) -> Tuple[float, float]:
@@ -91,11 +91,13 @@ class Continuous(Parameter):
         high = min(self.high, np.finfo(np.float32).max)
         return pd.Series(name=self.name, data=np.random.uniform(low, high, n))
 
-    def to_config(self) -> Dict:
+    def to_config(self) -> dict:
         """Return a json-serializable configuration dict."""
+        conf = dict(name=self.name, type=self.type)
         low = None if np.isinf(self.low) else float(self.low)
         high = None if np.isinf(self.high) else float(self.high)
-        conf = dict(name=self.name, type=self.type, domain=[low, high])
+        if low is not None or high is not None:
+            conf.update({"domain": [low, high]})
         conf.update(self.extra_fields)
         return conf
 
@@ -137,7 +139,7 @@ class Discrete(Parameter):
         super().__init__(name, domain, type="discrete", **kwargs)
 
     def __repr__(self):
-        return f"Discrete(name='{self.name}', domain={self.domain})"
+        return f"Discrete('{self.name}', domain={self.domain})"
 
     @property
     def bounds(self) -> Tuple[float, float]:
@@ -219,7 +221,7 @@ class Categorical(Parameter):
         super().__init__(name, domain, type="categorical", **kwargs)
 
     def __repr__(self):
-        return f"Categorical(name='{self.name}', domain={self.domain})"
+        return f"Categorical('{self.name}', domain={self.domain})"
 
     def contains(self, point):
         """Check if a point is in contained in the domain.
@@ -258,12 +260,32 @@ class Categorical(Parameter):
         )
 
     def from_onehot_encoding(self, points: pd.DataFrame) -> pd.Series:
-        """Convert points brack from one-hot encoding."""
+        """Convert points back from one-hot encoding."""
         cat_cols = [f"{self.name}{_CAT_SEP}{c}" for c in self.domain]
         if np.any([c not in cat_cols for c in points.columns]):
             raise ValueError(
                 f"Column names don't match categorical levels: {points.columns}, {cat_cols}"
             )
+        s = points.idxmax(1).str.split(_CAT_SEP, expand=True)[1]
+        s.name = self.name
+        return s
+
+    def to_dummy_encoding(self, points: pd.Series) -> pd.DataFrame:
+        """Convert points to a dummy-hot encoding, dropping the first categorical level."""
+        return pd.DataFrame(
+            {f"{self.name}{_CAT_SEP}{c}": points == c for c in self.domain[1:]},
+            dtype=float,
+        )
+
+    def from_dummy_encoding(self, points: pd.DataFrame) -> pd.Series:
+        """Convert points back from dummy encoding."""
+        cat_cols = [f"{self.name}{_CAT_SEP}{c}" for c in self.domain]
+        if np.any([c not in cat_cols[1:] for c in points.columns]):
+            raise ValueError(
+                f"Column names don't match categorical levels: {points.columns}, {cat_cols}"
+            )
+        points = points.copy()
+        points[cat_cols[0]] = 1 - points[cat_cols[1:]].sum(axis=1)
         s = points.idxmax(1).str.split(_CAT_SEP, expand=True)[1]
         s.name = self.name
         return s
@@ -376,8 +398,10 @@ class Parameters:
 
     def contains(self, points: pd.DataFrame) -> pd.Series:
         """Check if points are inside the space in each parameter."""
-        b = np.stack([self[k].contains(v) for k, v in points.iteritems()], axis=-1)
-        return b.all(axis=-1)
+        if isinstance(points, pd.DataFrame):
+            points = points[self.names]
+        b = np.stack([self[k].contains(v) for k, v in points.iteritems()], axis=1)
+        return b.all(axis=1)
 
     def round(self, points: pd.DataFrame) -> pd.DataFrame:
         """Round points to the closest contained values."""
@@ -403,25 +427,27 @@ class Parameters:
                 elif continuous == "normalize":
                     transformed.append(p.to_unit_range(s))
                 else:
-                    ValueError(f"Unknown continuous transform {continuous}")
+                    raise ValueError(f"Unknown continuous transform {continuous}")
             if isinstance(p, Discrete):
                 if discrete == "none":
                     transformed.append(s)
                 elif discrete == "normalize":
                     transformed.append(p.to_unit_range(s))
                 else:
-                    ValueError(f"Unknown discrete transform {continuous}")
+                    raise ValueError(f"Unknown discrete transform {continuous}")
             if isinstance(p, Categorical):
                 if categorical == "none":
                     transformed.append(s)
                 elif categorical == "onehot-encode":
                     transformed.append(p.to_onehot_encoding(s))
+                elif categorical == "dummy-encode":
+                    transformed.append(p.to_dummy_encoding(s))
                 elif categorical == "label-encode":
                     transformed.append(p.to_label_encoding(s))
                 else:
-                    ValueError(f"Unknown categorical transform {continuous}")
+                    raise ValueError(f"Unknown categorical transform {continuous}")
         return pd.concat(transformed, axis=1)
 
-    def to_config(self) -> List[Dict]:
+    def to_config(self) -> List[dict]:
         """Configuration of the parameter space."""
         return [param.to_config() for param in self.parameters.values()]

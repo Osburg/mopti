@@ -8,7 +8,7 @@ from pandas.api.types import is_numeric_dtype
 
 from opti.constraint import Constraint, Constraints
 from opti.model import LinearModel, Model, Models
-from opti.objective import Minimize, Objective, Objectives, make_objective
+from opti.objective import Minimize, Objective, Objectives
 from opti.parameter import Categorical, Continuous, Discrete, Parameter, Parameters
 from opti.sampling import constrained_sampling
 from opti.sampling.base import sobol_sampling
@@ -17,6 +17,7 @@ ParametersLike = Union[Parameters, List[Parameter], List[Dict]]
 ObjectivesLike = Union[Objectives, List[Objective], List[Dict]]
 ConstraintsLike = Union[Constraints, List[Constraint], List[Dict]]
 ModelsLike = Union[Models, List[Model], List[Dict]]
+DataFrameLike = Union[pd.DataFrame, Dict]
 PathLike = Union[str, bytes, os.PathLike]
 
 
@@ -30,9 +31,10 @@ class Problem:
         output_constraints: Optional[ObjectivesLike] = None,
         f: Optional[Callable] = None,
         models: Optional[ModelsLike] = None,
-        data: Optional[pd.DataFrame] = None,
-        optima: Optional[pd.DataFrame] = None,
+        data: Optional[DataFrameLike] = None,
+        optima: Optional[DataFrameLike] = None,
         name: Optional[str] = None,
+        **kwargs,
     ):
         """An optimization problem.
 
@@ -43,8 +45,7 @@ class Problem:
             constraints: Constraints on the inputs.
             output_constraints: Constraints on the outputs.
             f: Function to evaluate the outputs for given inputs.
-                Signature: f(x: np.ndarray) -> np.ndarray where both x and f(x) are 2D arrays
-                for vectorized evaluation.
+                Must have the signature: f(x: pd.DataFrame) -> pd.DataFrame
             data: Experimental data.
             optima: Pareto optima.
             name: Name of the problem.
@@ -85,7 +86,12 @@ class Problem:
         if f is not None:
             self.f = f
 
-        # checks
+        if isinstance(data, dict):
+            data = pd.DataFrame(**data)
+
+        if isinstance(optima, dict):
+            optima = pd.DataFrame(**optima)
+
         self.set_data(data)
         self.set_optima(optima)
         self.check_problem()
@@ -98,6 +104,14 @@ class Problem:
     @property
     def n_outputs(self) -> int:
         return len(self.outputs)
+
+    @property
+    def n_objectives(self) -> int:
+        return len(self.objectives)
+
+    @property
+    def n_constraints(self) -> int:
+        return 0 if self.constraints is None else len(self.constraints)
 
     def __repr__(self):
         return self.__str__()
@@ -123,45 +137,9 @@ class Problem:
     @staticmethod
     def from_config(config: dict) -> "Problem":
         """Create a Problem instance from a configuration dict."""
-        outputs = Parameters(config["outputs"])
+        return Problem(**config)
 
-        objectives = config.get("objectives", None)
-        if objectives is not None:
-            objectives = [make_objective(**o) for o in config["objectives"]]
-        else:
-            objectives = Objectives([Minimize(d.name) for d in outputs])
-
-        output_constraints = config.get("output_constraints", None)
-        if output_constraints is not None:
-            output_constraints = [
-                make_objective(**o) for o in config["output_constraints"]
-            ]
-
-        models = config.get("models", None)
-        if models is not None:
-            models = Models(models)
-
-        data = config.get("data", None)
-        if data:
-            data = pd.DataFrame(**config["data"])
-
-        optima = config.get("optima", None)
-        if optima:
-            optima = pd.DataFrame(**config["optima"])
-
-        return Problem(
-            inputs=config["inputs"],
-            outputs=outputs,
-            objectives=objectives,
-            constraints=config.get("constraints", None),
-            output_constraints=output_constraints,
-            models=models,
-            data=data,
-            optima=optima,
-            name=config.get("name", None),
-        )
-
-    def to_config(self) -> Dict:
+    def to_config(self) -> dict:
         """Return json-serializable configuration dict."""
 
         config = {
@@ -187,35 +165,25 @@ class Problem:
         """Read a problem from a JSON file."""
         with open(fname, "rb") as infile:
             config = json.loads(infile.read())
-        return Problem.from_config(config)
+        return Problem(**config)
 
     def to_json(self, fname: PathLike) -> None:
         """Save a problem from a JSON file."""
         with open(fname, "wb") as outfile:
-            b = json.dumps(self.to_config(), ensure_ascii=False, indent=2)
+            b = json.dumps(self.to_config(), ensure_ascii=False, separators=(",", ":"))
             outfile.write(b.encode("utf-8"))
-
-    def eval(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Evaluate the function on a DataFrame"""
-        x = data[self.inputs.names].values
-        y = self.f(x)
-        if y.ndim == 1:
-            y = y[:, None]
-        return pd.DataFrame(y, index=data.index, columns=self.outputs.names)
 
     def check_problem(self) -> None:
         """Check if input and output parameters are consistent."""
-        # check if inputs and outputs are consistent
+        # check for duplicate names
         duplicates = set(self.inputs.names).intersection(self.outputs.names)
         if duplicates:
             raise ValueError(f"Parameter name in both inputs and outputs: {duplicates}")
 
-        # check if objectives are consistent
-        all_parameters = self.inputs.names + self.outputs.names
+        # check if all objectives refer to an output
         for obj in self.objectives:
-            p = obj.parameter
-            if p not in all_parameters:
-                raise ValueError(f"Objective refers to unknown parameter: {p}")
+            if obj.name not in self.outputs.names:
+                raise ValueError(f"Objective refers to unknown parameter: {obj.name}")
 
     def check_data(self, data: pd.DataFrame) -> None:
         """Check if data is consistent with input and output parameters."""
@@ -339,11 +307,12 @@ class Problem:
         return constrained_sampling(n_samples, self.inputs, self.constraints)
 
     def create_initial_data(self, n_samples: int = 10) -> None:
-        """Create an initial data set by sampling uniformly from the input space and
-        evaluating f(x) at the sampled inputs.
-        """
+        """Create an initial data set for benchmark problems by sampling uniformly from the input space and evaluating f(x) at the sampled inputs."""
+        if self.f is None:
+            raise NotImplementedError("problem.f is not implemented for the problem.")
         X = self.sample_inputs(n_samples)
-        self.data = pd.concat([X, self.eval(X)], axis=1)
+        Y = self.f(X)
+        self.data = pd.concat([X, Y], axis=1)
 
 
 def read_json(filepath: PathLike) -> Problem:

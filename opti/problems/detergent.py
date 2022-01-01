@@ -1,9 +1,15 @@
 import numpy as np
+import pandas as pd
 
 from opti.constraint import LinearInequality, NChooseK
 from opti.objective import Maximize
-from opti.parameter import Continuous, Parameters
+from opti.parameter import Continuous, Discrete
 from opti.problem import Problem
+
+
+def _poly2(x: np.ndarray) -> np.ndarray:
+    """Full quadratic feature expansion including bias term."""
+    return np.concatenate([[1], x, np.outer(x, x)[np.triu_indices(5)]])
 
 
 class Detergent(Problem):
@@ -22,7 +28,7 @@ class Detergent(Problem):
         # scale = PolynomialFeatures(degree=2).fit_transform(base).T
         # coef = np.random.RandomState(42).normal(scale=scale, size=(len(scale), 5))
         # coef = np.clip(coef, 0, None)
-        coef = np.array(
+        self.coef = np.array(
             [
                 [0.4967, 0.0, 0.6477, 1.523, 0.0],
                 [0.0, 4.7376, 2.3023, 0.0, 1.6277],
@@ -48,36 +54,29 @@ class Detergent(Problem):
             ]
         )
 
-        def poly2(x: np.ndarray) -> np.ndarray:
-            """Full quadratic feature expansion including bias term."""
-            return np.concatenate([[1], x, np.outer(x, x)[np.triu_indices(5)]])
-
-        def f(x):
-            x = np.atleast_2d(x)
-            xp = np.stack([poly2(xi) for xi in x], axis=0)
-            return xp @ coef
-
-        inputs = Parameters(
-            [
+        super().__init__(
+            name="Detergent",
+            inputs=[
                 Continuous("x1", domain=[0.0, 0.2]),
                 Continuous("x2", domain=[0.0, 0.3]),
                 Continuous("x3", domain=[0.02, 0.2]),
                 Continuous("x4", domain=[0.0, 0.06]),
                 Continuous("x5", domain=[0.0, 0.04]),
-            ]
-        )
-
-        super().__init__(
-            name="Detergent",
-            inputs=inputs,
+            ],
             outputs=[Continuous(f"y{i+1}", domain=[0, 3]) for i in range(5)],
             objectives=[Maximize(f"y{i+1}") for i in range(5)],
             constraints=[
-                LinearInequality(names=inputs.names, lhs=-np.ones(5), rhs=-0.2),
-                LinearInequality(names=inputs.names, lhs=np.ones(5), rhs=0.4),
+                LinearInequality(
+                    names=["x1", "x2", "x3", "x4", "x5"], lhs=-1, rhs=-0.2
+                ),
+                LinearInequality(names=["x1", "x2", "x3", "x4", "x5"], lhs=1, rhs=0.4),
             ],
-            f=f,
         )
+
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x = np.atleast_2d(X[self.inputs.names])
+        xp = np.stack([_poly2(xi) for xi in x], axis=0)
+        return pd.DataFrame(xp @ self.coef, columns=self.outputs.names, index=X.index)
 
 
 class Detergent_NChooseKConstraint(Problem):
@@ -106,21 +105,28 @@ class Detergent_OutputConstraint(Problem):
         (0: not stable, 1: stable)
     """
 
-    def __init__(self):
+    def __init__(self, discrete=False):
         base = Detergent()
 
-        def f(x):
-            x = np.atleast_2d(x)
-            y1_5 = base.f(x)
-            y6 = (0.4 - x.sum(axis=1)) / 0.2  # continuous version
-            # y6 = np.sum(x, axis=1) < 0.3  # discrete version
-            return np.column_stack([y1_5, y6])
+        def f(X):
+            Y = base.f(X)
+            if discrete:
+                Y["stable"] = (X.sum(axis=1) < 0.3).astype(int)
+            else:
+                Y["stable"] = (0.4 - X.sum(axis=1)) / 0.2
+            return Y
+
+        outputs = list(base.outputs)
+        if discrete:
+            outputs += [Discrete("stable", domain=[0, 1])]
+        else:
+            outputs += [Continuous("stable", domain=[0, 1])]
 
         super().__init__(
             name="Detergent with stability constraint",
             inputs=base.inputs,
-            outputs=list(base.outputs) + [Continuous("stable", domain=[0, 1])],
-            objectives=[Maximize(f"y{i+1}") for i in range(3)],
+            outputs=outputs,
+            objectives=base.objectives,
             output_constraints=[Maximize("stable", target=0.5)],
             constraints=base.constraints,
             f=f,

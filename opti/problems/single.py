@@ -1,3 +1,5 @@
+"""Single objective benchmark problems.
+"""
 import numpy as np
 import pandas as pd
 
@@ -7,30 +9,35 @@ from opti.problem import Problem
 
 
 class Ackley(Problem):
+    """Ackley benchmark problem."""
+
     def __init__(self, n_inputs=2):
         super().__init__(
-            name="Ackley function",
+            name="Ackley problem",
             inputs=[Continuous(f"x{i}", [-32.768, +32.768]) for i in range(n_inputs)],
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x):
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
         a = 20
         b = 1 / 5
         c = 2 * np.pi
         n = self.n_inputs
-        x = np.atleast_2d(x)
+        x = self.get_X(X)
         part1 = -a * np.exp(-b * np.sqrt((1 / n) * np.sum(x ** 2, axis=-1)))
         part2 = -np.exp((1 / n) * np.sum(np.cos(c * x), axis=-1))
-        return part1 + part2 + a + np.exp(1)
+        y = part1 + part2 + a + np.exp(1)
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.zeros((1, self.n_inputs))
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Himmelblau(Problem):
+    """Himmelblau benchmark problem"""
+
     def __init__(self):
         super().__init__(
             name="Himmelblau function",
@@ -38,11 +45,12 @@ class Himmelblau(Problem):
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x):
-        x0, x1 = np.atleast_2d(x).T
-        return (x0 ** 2 + x1 - 11) ** 2 + (x0 + x1 ** 2 - 7) ** 2
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x0, x1 = self.get_X(X).T
+        y = (x0 ** 2 + x1 - 11) ** 2 + (x0 + x1 ** 2 - 7) ** 2
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.array(
             [
                 [3.0, 2.0],
@@ -56,6 +64,8 @@ class Himmelblau(Problem):
 
 
 class Rosenbrock(Problem):
+    """Rosenbrock benchmark problem."""
+
     def __init__(self, n_inputs=2):
         super().__init__(
             name="Rosenbrock function",
@@ -63,17 +73,20 @@ class Rosenbrock(Problem):
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x):
-        x = np.atleast_2d(x).T
-        return np.sum(100 * (x[1:] - x[:-1] ** 2) ** 2 + (1 - x[:-1]) ** 2, axis=0)
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x = self.get_X(X).T
+        y = np.sum(100 * (x[1:] - x[:-1] ** 2) ** 2 + (1 - x[:-1]) ** 2, axis=0)
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.ones((1, self.n_inputs))
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Schwefel(Problem):
+    """Schwefel benchmark problem"""
+
     def __init__(self, n_inputs=2):
         super().__init__(
             name="Schwefel function",
@@ -81,17 +94,20 @@ class Schwefel(Problem):
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x):
-        x = np.atleast_2d(x)
-        return 418.9829 * self.n_inputs - np.sum(x * np.sin(np.abs(x) ** 0.5), axis=1)
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x = self.get_X(X)
+        y = 418.9829 * self.n_inputs - np.sum(x * np.sin(np.abs(x) ** 0.5), axis=1)
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.full((1, self.n_inputs), 420.9687)
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Sphere(Problem):
+    """Sphere benchmark problem."""
+
     def __init__(self, n_inputs=10):
         super().__init__(
             name="Sphere function",
@@ -99,17 +115,20 @@ class Sphere(Problem):
             outputs=[Continuous("y", [0, 2])],
         )
 
-    def f(self, x):
-        x = np.atleast_2d(x)
-        return np.sum((x - 0.5) ** 2, axis=1)
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x = self.get_X(X)
+        y = np.sum((x - 0.5) ** 2, axis=1)
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.full((1, self.n_inputs), 0.5)
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Rastrigin(Problem):
+    """Rastrigin benchmark problem."""
+
     def __init__(self, n_inputs=2):
         super().__init__(
             name="Rastrigin function",
@@ -117,18 +136,21 @@ class Rastrigin(Problem):
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x):
-        x = np.atleast_2d(x)
+    def f(self, X: pd.DataFrame) -> pd.DataFrame:
+        x = self.get_X(X)
         a = 10
-        return a * self.n_inputs + np.sum(x ** 2 - a * np.cos(2 * np.pi * x), axis=1)
+        y = a * self.n_inputs + np.sum(x ** 2 - a * np.cos(2 * np.pi * x), axis=1)
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.zeros((1, self.n_inputs))
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Zakharov(Problem):
+    """Zakharov benchmark problem."""
+
     def __init__(self, n_inputs=2):
         super().__init__(
             name="Zakharov function",
@@ -136,19 +158,20 @@ class Zakharov(Problem):
             outputs=[Continuous("y", [-np.inf, np.inf])],
         )
 
-    def f(self, x: np.ndarray):
-        x = np.atleast_2d(x)
+    def f(self, X: pd.DataFrame):
+        x = self.get_X(X)
         a = 0.5 * np.sum(np.arange(1, self.n_inputs + 1) * x, axis=1)
-        return np.sum(x ** 2, axis=1) + a ** 2 + a ** 4
+        y = np.sum(x ** 2, axis=1) + a ** 2 + a ** 4
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = np.zeros((1, self.n_inputs))
         y = 0
         return pd.DataFrame(np.c_[x, y], columns=self.inputs.names + self.outputs.names)
 
 
 class Zakharov_NChooseKConstraint(Problem):
-    """Variant of the Zakharov problem with an n-choose-k constraint"""
+    """Zakharov problem with an n-choose-k constraint"""
 
     def __init__(self, n_inputs=5, n_max_active=3):
         base = Zakharov(n_inputs)
@@ -166,7 +189,7 @@ class Zakharov_NChooseKConstraint(Problem):
 
 
 class Zakharov_Constrained(Problem):
-    """Variant of the Zakharov problem with one linear constraint"""
+    """Zakharov problem with one linear constraint"""
 
     def __init__(self, n_inputs=5):
         base = Zakharov(n_inputs)
@@ -184,7 +207,7 @@ class Zakharov_Constrained(Problem):
 
 
 class Zakharov_Categorical(Problem):
-    """Variant of the Zakharov problem with one categorical input"""
+    """Zakharov problem with one categorical input"""
 
     def __init__(self, n_inputs=3):
         base = Zakharov(n_inputs)
@@ -195,11 +218,11 @@ class Zakharov_Categorical(Problem):
             outputs=base.outputs,
         )
 
-    def f(self, x: np.ndarray):
-        x_conti = np.atleast_2d(x[:, :-1])  # Just the continuous inputs
+    def f(self, X: pd.DataFrame):
+        x_conti = X[self.inputs.names[:-1]].values  # just the continuous inputs
         a = 0.5 * np.sum(np.arange(1, self.n_inputs) * x_conti, axis=1)
-        powers = np.repeat(np.expand_dims([2.0, 2.0, 4.0], 0), repeats=len(x), axis=0)
-        modify_powers = x[:, -1] == "two"
+        powers = np.repeat(np.expand_dims([2.0, 2.0, 4.0], 0), repeats=len(X), axis=0)
+        modify_powers = X[self.inputs.names[-1]] == "two"
         powers[modify_powers, :] += powers[modify_powers, :]
         res = (
             np.sum(x_conti ** np.expand_dims(powers[:, 0], 1), axis=1)
@@ -207,9 +230,10 @@ class Zakharov_Categorical(Problem):
             + a ** np.expand_dims(powers[:, 2], 0)
         )
         res_float_array = np.array(res, dtype=np.float64).ravel()
-        return res_float_array
+        y = res_float_array
+        return pd.DataFrame(y, columns=self.outputs.names, index=X.index)
 
-    def get_optima(self):
+    def get_optima(self) -> pd.DataFrame:
         x = list(np.zeros(self.n_inputs - 1)) + ["one"]
         y = [0]
         return pd.DataFrame([x + y], columns=self.inputs.names + self.outputs.names)

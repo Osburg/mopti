@@ -6,28 +6,14 @@ import pandas as pd
 
 
 class Constraint:
-    """Base class to define constraints on the input space, g(x) = 0 or g(x) <= 0."""
+    """Base class to define constraints on the input space, g(x) == 0 or g(x) <= 0."""
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
-        """Numerically evaluate the constraint.
-
-        Args:
-            data: Data to evaluate the constraint on.
-
-        Returns:
-            Constraint evaluation g(x) with equalities interpreted as g(x) = 0 and inequalities as g(x) <=0.
-        """
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
+        """Numerically evaluate the constraint g(x)."""
         raise NotImplementedError
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        """Check if a constraint is satisfied.
-
-        Args:
-            data: Data to evaluate the constraint on.
-
-        Returns:
-            Constraint evaluation g(x) = 0 or g(x) <= 0 depending on the constraint type.
-        """
+        """Check if a constraint is satisfied, i.e. g(x) == 0 for equalities and g(x) <= for inequalities."""
         raise NotImplementedError
 
     def to_config(self) -> Dict:
@@ -58,7 +44,7 @@ class Constraints:
     def __getitem__(self, i):
         return self.constraints[i]
 
-    def eval(self, data: pd.DataFrame) -> pd.DataFrame:
+    def __call__(self, data: pd.DataFrame) -> pd.DataFrame:
         """Numerically evaluate all constraints.
 
         Args:
@@ -67,7 +53,7 @@ class Constraints:
         Returns:
             Constraint evaluation g(x) for each of the constraints.
         """
-        return pd.concat([c.eval(data) for c in self.constraints], axis=1)
+        return pd.concat([c(data) for c in self.constraints], axis=1)
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
         """Check if all constraints are satisfied.
@@ -88,7 +74,10 @@ class Constraints:
 
 class LinearEquality(Constraint):
     def __init__(
-        self, names: List[str], lhs: Union[float, np.ndarray] = 1, rhs: float = 0
+        self,
+        names: List[str],
+        lhs: Union[float, List[float], np.ndarray] = 1,
+        rhs: float = 0,
     ):
         """Linear / affine inequality of the form 'lhs * x == rhs'.
 
@@ -117,11 +106,11 @@ class LinearEquality(Constraint):
         self.rhs = rhs
         self.is_equality = True
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
         return data[self.names] @ self.lhs - self.rhs
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        return pd.Series(np.isclose(self.eval(data), 0), index=data.index)
+        return pd.Series(np.isclose(self(data), 0), index=data.index)
 
     def __repr__(self):
         return (
@@ -139,7 +128,10 @@ class LinearEquality(Constraint):
 
 class LinearInequality(Constraint):
     def __init__(
-        self, names: List[str], lhs: Union[float, np.ndarray] = 1, rhs: float = 0
+        self,
+        names: List[str],
+        lhs: Union[float, List[float], np.ndarray] = 1,
+        rhs: float = 0,
     ):
         """Linear / affine inequality of the form 'lhs * x <= rhs'.
 
@@ -173,11 +165,11 @@ class LinearInequality(Constraint):
         self.rhs = rhs
         self.is_equality = False
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
         return data[self.names] @ self.lhs - self.rhs
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        return self.eval(data) <= 0
+        return self(data) <= 0
 
     def __repr__(self):
         return f"LinearInequality(names={self.names}, lhs={list(self.lhs)}, rhs={self.rhs})"
@@ -216,11 +208,11 @@ class NonlinearEquality(Constraint):
         self.expression = expression
         self.is_equality = True
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
         return data.eval(self.expression)
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        return pd.Series(np.isclose(self.eval(data), 0), index=data.index)
+        return pd.Series(np.isclose(self(data), 0), index=data.index)
 
     def __repr__(self):
         return f"NonlinearEquality('{self.expression}')"
@@ -254,11 +246,11 @@ class NonlinearInequality(Constraint):
         self.expression = expression
         self.is_equality = False
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
         return data.eval(self.expression)
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        return self.eval(data) <= 0
+        return self(data) <= 0
 
     def __repr__(self):
         return f"NonlinearInequality('{self.expression}')"
@@ -285,7 +277,7 @@ class NChooseK(Constraint):
         self.max_active = max_active
         self.is_equality = False
 
-    def eval(self, data: pd.DataFrame) -> pd.Series:
+    def __call__(self, data: pd.DataFrame) -> pd.Series:
         x = data[self.names].values
         num_zeros = x.shape[1] - self.max_active
         violation = np.apply_along_axis(
@@ -294,7 +286,7 @@ class NChooseK(Constraint):
         return pd.Series(violation, index=data.index)
 
     def satisfied(self, data: pd.DataFrame) -> pd.Series:
-        return pd.Series(self.eval(data) <= 0, index=data.index)
+        return pd.Series(self(data) <= 0, index=data.index)
 
     def __repr__(self):
         return f"NChooseK(names={self.names}, max_active={self.max_active})"
