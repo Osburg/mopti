@@ -10,8 +10,14 @@
       
         <link rel="canonical" href="https://basf.github.io/mopti/ref-parameter/">
       
+      
+        <link rel="prev" href="../ref-problem/">
+      
+      
+        <link rel="next" href="../ref-objective/">
+      
       <link rel="icon" href="../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
@@ -19,19 +25,21 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.bb3983ee.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7bf56d0a.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
         
-      
-    
-    
-    
-      
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -40,10 +48,11 @@
     
       <link rel="stylesheet" href="../stylesheets/style.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -54,7 +63,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
     
@@ -76,7 +85,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Opti" class="md-header__button md-logo" aria-label="Opti" data-md-component="logo">
       
@@ -84,7 +95,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -106,7 +117,7 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -114,13 +125,13 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -131,7 +142,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -140,10 +151,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/basf/mopti/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/basf/mopti" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     basf/mopti
@@ -186,10 +197,10 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/basf/mopti/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/basf/mopti" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     basf/mopti
@@ -237,8 +248,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
-        Overview
+      <a href="../problem/" class="md-nav__link">
+        Getting started
       </a>
     </li>
   
@@ -255,18 +266,68 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/problem_reduction/" class="md-nav__link">
+        Problem reduction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-        <label class="md-nav__link" for="__nav_4">
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           Datasets
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Datasets" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Datasets
         </label>
@@ -445,18 +506,19 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           API Reference
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           API Reference
         </label>
@@ -485,7 +547,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -529,6 +591,13 @@
   
     <nav class="md-nav" aria-label="Categorical">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opti.parameter.Categorical.bounds" class="md-nav__link">
+    bounds
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#opti.parameter.Categorical.contains" class="md-nav__link">
@@ -683,8 +752,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opti.parameter.Discrete.is_integer" class="md-nav__link">
-    is_integer()
+  <a href="#opti.parameter.Discrete.from_unit_range" class="md-nav__link">
+    from_unit_range()
   </a>
   
 </li>
@@ -765,6 +834,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#opti.parameter.Parameters.get" class="md-nav__link">
+    get()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#opti.parameter.Parameters.round" class="md-nav__link">
     round()
   </a>
@@ -781,6 +857,20 @@
           <li class="md-nav__item">
   <a href="#opti.parameter.Parameters.to_config" class="md-nav__link">
     to_config()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opti.parameter.Parameters.to_df" class="md-nav__link">
+    to_df()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opti.parameter.Parameters.transform" class="md-nav__link">
+    transform()
   </a>
   
 </li>
@@ -918,13 +1008,14 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/basf/mopti/edit/master/docs/ref-parameter.md" title="Edit this page" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  
+  
 
 
 <h1 id="parameters">Parameters</h1>
@@ -952,7 +1043,7 @@
 
 <h2 id="opti.parameter.Categorical" class="doc doc-heading">
         <code>
-Categorical            (<a title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
+Categorical            (<a class="autorefs autorefs-internal" title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
         </code>
 
 
@@ -961,7 +1052,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
 
     <div class="doc doc-contents ">
 
-      <p>Categorical parameter (nominal scale, values cannot be put into order).</p>
+      <p>Variable with a categorical domain (nominal scale, values cannot be put into order).</p>
 
 <p><strong>Attributes:</strong></p>
 <table>
@@ -988,27 +1079,32 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Categorical</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Categorical parameter (nominal scale, values cannot be put into order).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Variable with a categorical domain (nominal scale, values cannot be put into order).</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        name (str): name of the parameter</span>
 <span class="sd">        domain (list): list possible values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain must be of type list&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain must be of type list.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain must a least contain 2 values&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain must a least contain 2 values.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain contains duplicates&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain contains duplicates.&quot;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Categorical(&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, domain=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="si">}</span><span class="s2">)&quot;</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the domain bounds.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
     <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1021,7 +1117,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1030,43 +1126,45 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
 <span class="sd">            Object of the same type as `point`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">point</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cannot round categorical variable&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Cannot round values for categorical parameter.&quot;</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">point</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">to_onehot_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points to a one-hot encoding.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points to a one-hot encoding.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">points</span> <span class="o">==</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">},</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">from_onehot_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points back from one-hot encoding.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points back from one-hot encoding.&quot;&quot;&quot;</span>
         <span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cat_cols</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="p">]):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_CAT_SEP</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="k">return</span> <span class="n">s</span>
 
     <span class="k">def</span> <span class="nf">to_dummy_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points to a dummy-hot encoding, dropping the first categorical level.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points to a dummy-hot encoding, dropping the first categorical level.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">points</span> <span class="o">==</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">:]},</span>
             <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">from_dummy_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points back from dummy encoding.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points back from dummy encoding.&quot;&quot;&quot;</span>
         <span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cat_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="p">]):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
         <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">points</span><span class="p">[</span><span class="n">cat_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="n">cat_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1075,7 +1173,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <span class="k">return</span> <span class="n">s</span>
 
     <span class="k">def</span> <span class="nf">to_label_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points to label-encoding.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points to label-encoding.&quot;&quot;&quot;</span>
         <span class="n">enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">enc</span><span class="p">[</span><span class="n">points</span><span class="p">]</span>
         <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">index</span>
@@ -1083,7 +1181,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <span class="k">return</span> <span class="n">s</span>
 
     <span class="k">def</span> <span class="nf">from_label_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert points back from label-encoding.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert points back from label-encoding.&quot;&quot;&quot;</span>
         <span class="n">enc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">enc</span><span class="p">[</span><span class="n">points</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
@@ -1095,6 +1193,29 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
 
 
 
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="opti.parameter.Categorical.bounds" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the domain bounds.</p>
+    </div>
+
+  </div>
 
 
 
@@ -1154,7 +1275,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1190,11 +1311,11 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_dummy_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points back from dummy encoding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points back from dummy encoding.&quot;&quot;&quot;</span>
     <span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cat_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="p">]):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
     <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">points</span><span class="p">[</span><span class="n">cat_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="n">cat_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1226,7 +1347,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_label_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points back from label-encoding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points back from label-encoding.&quot;&quot;&quot;</span>
     <span class="n">enc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">enc</span><span class="p">[</span><span class="n">points</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
@@ -1254,11 +1375,11 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_onehot_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points back from one-hot encoding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points back from one-hot encoding.&quot;&quot;&quot;</span>
     <span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cat_cols</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="p">]):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Column names don&#39;t match categorical levels: </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cat_cols</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_CAT_SEP</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -1322,7 +1443,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1331,7 +1452,9 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
 <span class="sd">        Object of the same type as `point`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">point</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cannot round categorical variable&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: Cannot round values for categorical parameter.&quot;</span>
+        <span class="p">)</span>
     <span class="k">return</span> <span class="n">point</span>
 </code></pre></div>
         </details>
@@ -1358,7 +1481,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
 </code></pre></div>
         </details>
@@ -1385,7 +1508,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_dummy_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points to a dummy-hot encoding, dropping the first categorical level.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points to a dummy-hot encoding, dropping the first categorical level.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">points</span> <span class="o">==</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">:]},</span>
         <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
@@ -1415,7 +1538,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_label_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points to label-encoding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points to label-encoding.&quot;&quot;&quot;</span>
     <span class="n">enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">enc</span><span class="p">[</span><span class="n">points</span><span class="p">]</span>
     <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">index</span>
@@ -1446,7 +1569,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_onehot_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert points to a one-hot encoding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert points to a one-hot encoding.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}{</span><span class="n">_CAT_SEP</span><span class="si">}{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">points</span> <span class="o">==</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">},</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
     <span class="p">)</span>
@@ -1474,7 +1597,7 @@ Categorical            (<a title="opti.parameter.Parameter" href="#opti.paramete
 
 <h2 id="opti.parameter.Continuous" class="doc doc-heading">
         <code>
-Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
+Continuous            (<a class="autorefs autorefs-internal" title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
         </code>
 
 
@@ -1483,7 +1606,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
 
     <div class="doc doc-contents ">
 
-      <p>Parameter that can take on any real value in the specified domain.</p>
+      <p>Variable that can take on any real value in the specified domain.</p>
 
 <p><strong>Attributes:</strong></p>
 <table>
@@ -1510,7 +1633,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Continuous</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Parameter that can take on any real value in the specified domain.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Variable that can take on any real value in the specified domain.</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        name (str): name of the parameter</span>
@@ -1527,12 +1650,17 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
             <span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain needs to consist of two values [low, high]&quot;</span><span class="p">)</span>
-        <span class="c1"># convert None to inf (json doesn&#39;t support infinity)</span>
-        <span class="n">low</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain must consist of two values [low, high].&quot;</span>
+                <span class="p">)</span>
+        <span class="c1"># convert None to +/- inf and string to float</span>
+        <span class="n">low</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">domain</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
         <span class="k">if</span> <span class="n">high</span> <span class="o">&lt;</span> <span class="n">low</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lower bound </span><span class="si">{</span><span class="n">low</span><span class="si">}</span><span class="s2"> must be less than upper bound </span><span class="si">{</span><span class="n">high</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Lower bound </span><span class="si">{</span><span class="n">low</span><span class="si">}</span><span class="s2"> must be less than upper bound </span><span class="si">{</span><span class="n">high</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">low</span> <span class="o">=</span> <span class="n">low</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">=</span> <span class="n">high</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1545,11 +1673,11 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return the domain bounds.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the domain bounds.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span>
 
     <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1560,7 +1688,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">point</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">point</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1571,13 +1699,13 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
         <span class="n">low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">)</span>
         <span class="n">high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
         <span class="n">conf</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
         <span class="n">low</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span>
         <span class="n">high</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span>
@@ -1587,16 +1715,24 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <span class="k">return</span> <span class="n">conf</span>
 
     <span class="k">def</span> <span class="nf">to_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].</span>
+
+<span class="sd">        Points outside of the domain will transform to outside of [0, 1].</span>
+<span class="sd">        Nothing is done if low == high.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">points</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">points</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">from_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0-1] -&gt; [low, high].&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0, 1] -&gt; [low, high].</span>
+
+<span class="sd">        A rounding is applied to correct for numerical precision.</span>
+<span class="sd">        Nothing is done if low == high.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span>
+            <span class="k">return</span> <span class="n">points</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">points</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span>
 </code></pre></div>
@@ -1690,7 +1826,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1719,14 +1855,20 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
 
     <div class="doc doc-contents ">
 
-      <p>Transform points from the unit range: [0-1] -&gt; [low, high].</p>
+      <p>Transform points from the unit range: [0, 1] -&gt; [low, high].</p>
+<p>A rounding is applied to correct for numerical precision.
+Nothing is done if low == high.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0-1] -&gt; [low, high].&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0, 1] -&gt; [low, high].</span>
+
+<span class="sd">    A rounding is applied to correct for numerical precision.</span>
+<span class="sd">    Nothing is done if low == high.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span>
+        <span class="k">return</span> <span class="n">points</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">points</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span>
 </code></pre></div>
@@ -1788,7 +1930,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1822,7 +1964,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
     <span class="n">low</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">)</span>
     <span class="n">high</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
@@ -1851,7 +1993,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
     <span class="n">conf</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
     <span class="n">low</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span>
     <span class="n">high</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">)</span>
@@ -1880,11 +2022,17 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
     <div class="doc doc-contents ">
 
       <p>Transform points to the unit range: [low, high] -&gt; [0, 1].</p>
+<p>Points outside of the domain will transform to outside of [0, 1].
+Nothing is done if low == high.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].</span>
+
+<span class="sd">    Points outside of the domain will transform to outside of [0, 1].</span>
+<span class="sd">    Nothing is done if low == high.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">points</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1913,7 +2061,7 @@ Continuous            (<a title="opti.parameter.Parameter" href="#opti.parameter
 
 <h2 id="opti.parameter.Discrete" class="doc doc-heading">
         <code>
-Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
+Discrete            (<a class="autorefs autorefs-internal" title="opti.parameter.Parameter" href="#opti.parameter.Parameter">Parameter</a>)
         </code>
 
 
@@ -1922,7 +2070,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
 
     <div class="doc doc-contents ">
 
-      <p>Discrete parameter (ordinal scale).</p>
+      <p>Variable with a discrete domain (ordinal scale).</p>
 
 <p><strong>Attributes:</strong></p>
 <table>
@@ -1949,7 +2097,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Discrete</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Discrete parameter (ordinal scale).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Variable with a discrete domain (ordinal scale).</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        name (str): name of the parameter</span>
@@ -1958,14 +2106,14 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain must contain at least 1 value&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain contains non-numeric values&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain must contain at least one value.&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># convert to a sorted list of floats</span>
+            <span class="n">domain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain contains non-numeric values.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;domain contains duplicates&quot;</span><span class="p">)</span>
-        <span class="c1"># convert to python-native dtype to ensure json-serializability</span>
-        <span class="n">domain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: Domain contains duplicates.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;discrete&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1975,18 +2123,11 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return the domain bounds.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the domain bounds.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span>
 
-    <span class="k">def</span> <span class="nf">is_integer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if the domain is an integer range, such as [1, 2, 3]&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
     <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -1999,7 +2140,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -2020,19 +2161,31 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
             <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">rounded</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">point</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">to_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform points to the unit range.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].</span>
 
-<span class="sd">        Note, if the given points are not inside the domain of the parameter, the</span>
-<span class="sd">        transformed will not be inside the unit range.</span>
+<span class="sd">        Points outside of the domain will transform to outside of [0, 1].</span>
+<span class="sd">        Nothing is done if low == high.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">points</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">points</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">from_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0, 1] -&gt; [low, high].</span>
+
+<span class="sd">        A rounding is applied to correct for numerical precision.</span>
+<span class="sd">        Nothing is done if low == high.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">points</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">points</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </code></pre></div>
         </details>
 
@@ -2124,7 +2277,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a point is in contained in the domain.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -2147,24 +2300,31 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
 
 
 
-<h3 id="opti.parameter.Discrete.is_integer" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">is_integer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+<h3 id="opti.parameter.Discrete.from_unit_range" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">from_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span></code>
 
 
 </h3>
 
     <div class="doc doc-contents ">
 
-      <p>Check if the domain is an integer range, such as [1, 2, 3]</p>
+      <p>Transform points from the unit range: [0, 1] -&gt; [low, high].</p>
+<p>A rounding is applied to correct for numerical precision.
+Nothing is done if low == high.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_integer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check if the domain is an integer range, such as [1, 2, 3]&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform points from the unit range: [0, 1] -&gt; [low, high].</span>
+
+<span class="sd">    A rounding is applied to correct for numerical precision.</span>
+<span class="sd">    Nothing is done if low == high.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">points</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">points</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">low</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -2224,7 +2384,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Round a point to the closest contained values.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point (float, np.ndarray, pd.Series or pd.Dataframe): parameter value(s).</span>
@@ -2268,7 +2428,7 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw random samples from the domain.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
 </code></pre></div>
         </details>
@@ -2290,17 +2450,17 @@ Discrete            (<a title="opti.parameter.Parameter" href="#opti.parameter.P
 
     <div class="doc doc-contents ">
 
-      <p>Transform points to the unit range.</p>
-<p>Note, if the given points are not inside the domain of the parameter, the
-transformed will not be inside the unit range.</p>
+      <p>Transform points to the unit range: [low, high] -&gt; [0, 1].</p>
+<p>Points outside of the domain will transform to outside of [0, 1].
+Nothing is done if low == high.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_unit_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transform points to the unit range.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform points to the unit range: [low, high] -&gt; [0, 1].</span>
 
-<span class="sd">    Note, if the given points are not inside the domain of the parameter, the</span>
-<span class="sd">    transformed will not be inside the unit range.</span>
+<span class="sd">    Points outside of the domain will transform to outside of [0, 1].</span>
+<span class="sd">    Nothing is done if low == high.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">points</span>
@@ -2343,7 +2503,7 @@ Parameter        </code>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Parameter base class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter base class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -2352,7 +2512,7 @@ Parameter        </code>
         <span class="bp">self</span><span class="o">.</span><span class="n">extra_fields</span> <span class="o">=</span> <span class="n">kwargs</span>
 
     <span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
         <span class="n">conf</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
         <span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_fields</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">conf</span>
@@ -2389,7 +2549,7 @@ Parameter        </code>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a json-serializable configuration dict.&quot;&quot;&quot;</span>
     <span class="n">conf</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
     <span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_fields</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">conf</span>
@@ -2425,18 +2585,18 @@ Parameters        </code>
 
     <div class="doc doc-contents ">
 
-      <p>Set of parameters representing either the input or the output space.</p>
+      <p>Set of parameters representing either the input or the output parameter space.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Parameters</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Set of parameters representing either the input or the output space.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set of parameters representing either the input or the output parameter space.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        It can be constructed either from a list / tuple (of at least one) Parameter objects</span>
 <span class="sd">        ```</span>
-<span class="sd">        Space([</span>
+<span class="sd">        Parameters([</span>
 <span class="sd">            Continuous(name=&quot;foo&quot;, domain=[1, 10]),</span>
 <span class="sd">            Discrete(name=&quot;bar&quot;, domain=[1, 2, 3, 4]),</span>
 <span class="sd">            Categorical(name=&quot;baz&quot;, domain=[&quot;A&quot;, &quot;B&quot;, 3]),</span>
@@ -2444,7 +2604,7 @@ Parameters        </code>
 <span class="sd">        ```</span>
 <span class="sd">        or from a list / tuple of dicts</span>
 <span class="sd">        ```</span>
-<span class="sd">        Space([</span>
+<span class="sd">        Parameters([</span>
 <span class="sd">            {&quot;name&quot;: &quot;foo&quot;, &quot;type&quot;: &quot;continuous&quot;, &quot;domain&quot;: [1, 10]},</span>
 <span class="sd">            {&quot;name&quot;: &quot;bar&quot;, &quot;type&quot;: &quot;discrete&quot;, &quot;domain&quot;: [1, 2, 3, 4]},</span>
 <span class="sd">            {&quot;name&quot;: &quot;baz&quot;, &quot;type&quot;: &quot;categorical&quot;, &quot;domain&quot;: [&quot;A&quot;, &quot;B&quot;, 3]},</span>
@@ -2455,7 +2615,7 @@ Parameters        </code>
 <span class="sd">        Parameters(conf).to_config() == conf</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Space expects a list or tuple of parameters.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Parameters expects a list or tuple of parameters.&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
@@ -2487,27 +2647,22 @@ Parameters        </code>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the parameter bounds.&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                    <span class="s2">&quot;Contains categorical parameters which are not bounded.&quot;</span>
-                <span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the parameter bounds.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">bounds</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Check if points are inside the space in each parameter.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if points are inside the domain of each parameter.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">]</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">b</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Round points to the closest contained values.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Round points to the closest contained values.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Draw uniformly distributed random samples.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw uniformly distributed random samples.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">param</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span>
@@ -2517,6 +2672,28 @@ Parameters        </code>
         <span class="n">discrete</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
         <span class="n">categorical</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;onehot-encode&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transfrom the given dataframe according to a set of transformation rules.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            points (pd.DataFrame): Dataframe to transfrom. Must contain columns for each parameter and may contain additional columns.</span>
+<span class="sd">            continuous (str, optional): Transform for continuous parameters. Options are</span>
+<span class="sd">                - &quot;none&quot; (default): keep values unchanged.</span>
+<span class="sd">                - &quot;normalize&quot;: transforms the domain bounds to [0, 1]</span>
+<span class="sd">            discrete (str, optional): Transform for discrete parameters. Options are</span>
+<span class="sd">                - &quot;none&quot; (default): keep values unchanged.</span>
+<span class="sd">                - &quot;normalize&quot;: transforms the domain bounds to [0, 1]</span>
+<span class="sd">            categorical (str, optional): Transform for categoricals. Options are</span>
+<span class="sd">                - &quot;onehot-encode&quot; (default): A parameter with levels [A, B, C] transforms to 3 columns holding values [0, 1]</span>
+<span class="sd">                - &quot;dummy-encode&quot;: a parameter with levels [A, B, C] transforms to 2 columns holding values [0, 1]</span>
+<span class="sd">                - &quot;label-encode&quot;: a parameter with levels [A, B, C] transfroms to 1 columns with values [0, 1, 2]</span>
+<span class="sd">                - &quot;none&quot;: keep values unchanged</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: Unknown transform.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: Transformed points. Columns that don&#39;t correspond to parameters are dropped.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">transformed</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
@@ -2526,14 +2703,14 @@ Parameters        </code>
                 <span class="k">elif</span> <span class="n">continuous</span> <span class="o">==</span> <span class="s2">&quot;normalize&quot;</span><span class="p">:</span>
                     <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_unit_range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown continuous transform </span><span class="si">{</span><span class="n">continuous</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown continuous transform </span><span class="si">{</span><span class="n">continuous</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">discrete</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
                     <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">discrete</span> <span class="o">==</span> <span class="s2">&quot;normalize&quot;</span><span class="p">:</span>
                     <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_unit_range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown discrete transform </span><span class="si">{</span><span class="n">continuous</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown discrete transform </span><span class="si">{</span><span class="n">discrete</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
                     <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -2544,12 +2721,24 @@ Parameters        </code>
                 <span class="k">elif</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;label-encode&quot;</span><span class="p">:</span>
                     <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_label_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown categorical transform </span><span class="si">{</span><span class="n">continuous</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown categorical transform </span><span class="si">{</span><span class="n">categorical</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">transformed</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Configuration of the parameter space.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration of the parameter space.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">to_config</span><span class="p">()</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Parameters&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all parameters of the given type(s).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Parameters</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">types</span><span class="p">)])</span>
+
+    <span class="k">def</span> <span class="nf">to_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">to_numeric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a dataframe for a given numpy array of parameter values.&quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">to_numeric</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">Continuous</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">))</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">X</span>
 </code></pre></div>
         </details>
 
@@ -2607,14 +2796,14 @@ Parameters        </code>
     <div class="doc doc-contents ">
 
       <p>It can be constructed either from a list / tuple (of at least one) Parameter objects
-<div class="highlight"><pre><span></span><code>Space([
+<div class="highlight"><pre><span></span><code>Parameters([
     Continuous(name=&quot;foo&quot;, domain=[1, 10]),
     Discrete(name=&quot;bar&quot;, domain=[1, 2, 3, 4]),
     Categorical(name=&quot;baz&quot;, domain=[&quot;A&quot;, &quot;B&quot;, 3]),
 ])
 </code></pre></div>
 or from a list / tuple of dicts
-<div class="highlight"><pre><span></span><code>Space([
+<div class="highlight"><pre><span></span><code>Parameters([
     {&quot;name&quot;: &quot;foo&quot;, &quot;type&quot;: &quot;continuous&quot;, &quot;domain&quot;: [1, 10]},
     {&quot;name&quot;: &quot;bar&quot;, &quot;type&quot;: &quot;discrete&quot;, &quot;domain&quot;: [1, 2, 3, 4]},
     {&quot;name&quot;: &quot;baz&quot;, &quot;type&quot;: &quot;categorical&quot;, &quot;domain&quot;: [&quot;A&quot;, &quot;B&quot;, 3]},
@@ -2627,10 +2816,10 @@ Parameters(conf).to_config() == conf</p>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    It can be constructed either from a list / tuple (of at least one) Parameter objects</span>
 <span class="sd">    ```</span>
-<span class="sd">    Space([</span>
+<span class="sd">    Parameters([</span>
 <span class="sd">        Continuous(name=&quot;foo&quot;, domain=[1, 10]),</span>
 <span class="sd">        Discrete(name=&quot;bar&quot;, domain=[1, 2, 3, 4]),</span>
 <span class="sd">        Categorical(name=&quot;baz&quot;, domain=[&quot;A&quot;, &quot;B&quot;, 3]),</span>
@@ -2638,7 +2827,7 @@ Parameters(conf).to_config() == conf</p>
 <span class="sd">    ```</span>
 <span class="sd">    or from a list / tuple of dicts</span>
 <span class="sd">    ```</span>
-<span class="sd">    Space([</span>
+<span class="sd">    Parameters([</span>
 <span class="sd">        {&quot;name&quot;: &quot;foo&quot;, &quot;type&quot;: &quot;continuous&quot;, &quot;domain&quot;: [1, 10]},</span>
 <span class="sd">        {&quot;name&quot;: &quot;bar&quot;, &quot;type&quot;: &quot;discrete&quot;, &quot;domain&quot;: [1, 2, 3, 4]},</span>
 <span class="sd">        {&quot;name&quot;: &quot;baz&quot;, &quot;type&quot;: &quot;categorical&quot;, &quot;domain&quot;: [&quot;A&quot;, &quot;B&quot;, 3]},</span>
@@ -2649,7 +2838,7 @@ Parameters(conf).to_config() == conf</p>
 <span class="sd">    Parameters(conf).to_config() == conf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Space expects a list or tuple of parameters.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Parameters expects a list or tuple of parameters.&quot;</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
@@ -2681,16 +2870,43 @@ Parameters(conf).to_config() == conf</p>
 
     <div class="doc doc-contents ">
 
-      <p>Check if points are inside the space in each parameter.</p>
+      <p>Check if points are inside the domain of each parameter.</p>
 
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Check if points are inside the space in each parameter.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if points are inside the domain of each parameter.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
         <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">]</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="opti.parameter.Parameters.get" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get all parameters of the given type(s).</p>
+
+        <details class="quote">
+          <summary>Source code in <code>opti/parameter.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Parameters&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get all parameters of the given type(s).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Parameters</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">types</span><span class="p">)])</span>
 </code></pre></div>
         </details>
     </div>
@@ -2716,7 +2932,7 @@ Parameters(conf).to_config() == conf</p>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Round points to the closest contained values.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Round points to the closest contained values.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -2743,7 +2959,7 @@ Parameters(conf).to_config() == conf</p>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Draw uniformly distributed random samples.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw uniformly distributed random samples.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">param</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -2770,7 +2986,7 @@ Parameters(conf).to_config() == conf</p>
         <details class="quote">
           <summary>Source code in <code>opti/parameter.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Configuration of the parameter space.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration of the parameter space.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">to_config</span><span class="p">()</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
 </code></pre></div>
         </details>
@@ -2778,6 +2994,193 @@ Parameters(conf).to_config() == conf</p>
 
   </div>
 
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="opti.parameter.Parameters.to_df" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">to_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">to_numeric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a dataframe for a given numpy array of parameter values.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>opti/parameter.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">to_numeric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a dataframe for a given numpy array of parameter values.&quot;&quot;&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">to_numeric</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">Continuous</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">))</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">X</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="opti.parameter.Parameters.transform" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">continuous</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">discrete</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="s1">&#39;onehot-encode&#39;</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Transfrom the given dataframe according to a set of transformation rules.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>points</code></td>
+        <td><code>pd.DataFrame</code></td>
+        <td><p>Dataframe to transfrom. Must contain columns for each parameter and may contain additional columns.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>continuous</code></td>
+        <td><code>str</code></td>
+        <td><p>Transform for continuous parameters. Options are
+- "none" (default): keep values unchanged.
+- "normalize": transforms the domain bounds to [0, 1]</p></td>
+        <td><code>&#39;none&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>discrete</code></td>
+        <td><code>str</code></td>
+        <td><p>Transform for discrete parameters. Options are
+- "none" (default): keep values unchanged.
+- "normalize": transforms the domain bounds to [0, 1]</p></td>
+        <td><code>&#39;none&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>categorical</code></td>
+        <td><code>str</code></td>
+        <td><p>Transform for categoricals. Options are
+- "onehot-encode" (default): A parameter with levels [A, B, C] transforms to 3 columns holding values [0, 1]
+- "dummy-encode": a parameter with levels [A, B, C] transforms to 2 columns holding values [0, 1]
+- "label-encode": a parameter with levels [A, B, C] transfroms to 1 columns with values [0, 1, 2]
+- "none": keep values unchanged</p></td>
+        <td><code>&#39;onehot-encode&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>Unknown transform.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>pd.DataFrame</code></td>
+      <td><p>Transformed points. Columns that don't correspond to parameters are dropped.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>opti/parameter.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">transform</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">continuous</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">discrete</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">categorical</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;onehot-encode&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transfrom the given dataframe according to a set of transformation rules.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        points (pd.DataFrame): Dataframe to transfrom. Must contain columns for each parameter and may contain additional columns.</span>
+<span class="sd">        continuous (str, optional): Transform for continuous parameters. Options are</span>
+<span class="sd">            - &quot;none&quot; (default): keep values unchanged.</span>
+<span class="sd">            - &quot;normalize&quot;: transforms the domain bounds to [0, 1]</span>
+<span class="sd">        discrete (str, optional): Transform for discrete parameters. Options are</span>
+<span class="sd">            - &quot;none&quot; (default): keep values unchanged.</span>
+<span class="sd">            - &quot;normalize&quot;: transforms the domain bounds to [0, 1]</span>
+<span class="sd">        categorical (str, optional): Transform for categoricals. Options are</span>
+<span class="sd">            - &quot;onehot-encode&quot; (default): A parameter with levels [A, B, C] transforms to 3 columns holding values [0, 1]</span>
+<span class="sd">            - &quot;dummy-encode&quot;: a parameter with levels [A, B, C] transforms to 2 columns holding values [0, 1]</span>
+<span class="sd">            - &quot;label-encode&quot;: a parameter with levels [A, B, C] transfroms to 1 columns with values [0, 1, 2]</span>
+<span class="sd">            - &quot;none&quot;: keep values unchanged</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: Unknown transform.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: Transformed points. Columns that don&#39;t correspond to parameters are dropped.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">transformed</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Continuous</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">continuous</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">continuous</span> <span class="o">==</span> <span class="s2">&quot;normalize&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_unit_range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown continuous transform </span><span class="si">{</span><span class="n">continuous</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">discrete</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">discrete</span> <span class="o">==</span> <span class="s2">&quot;normalize&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_unit_range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown discrete transform </span><span class="si">{</span><span class="n">discrete</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Categorical</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;onehot-encode&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_onehot_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;dummy-encode&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_dummy_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">categorical</span> <span class="o">==</span> <span class="s2">&quot;label-encode&quot;</span><span class="p">:</span>
+                <span class="n">transformed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">to_label_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown categorical transform </span><span class="si">{</span><span class="n">categorical</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">transformed</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
@@ -2846,7 +3249,7 @@ Parameters(conf).to_config() == conf</p>
     <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a parameter object from a configuration</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a parameter object from a configuration</span>
 
 <span class="sd">    p = make_parameter(**config)</span>
 
@@ -2861,7 +3264,7 @@ Parameters(conf).to_config() == conf</p>
         <span class="s2">&quot;categorical&quot;</span><span class="p">:</span> <span class="n">Categorical</span><span class="p">,</span>
     <span class="p">}[</span><span class="nb">type</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
     <span class="k">if</span> <span class="n">domain</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Continuous</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;domain not given for parameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Domain not given for parameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
@@ -2881,49 +3284,20 @@ Parameters(conf).to_config() == conf</p>
 
   </div>
 
-              
-            </article>
-          </div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../ref-problem/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Problem" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Problem
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../ref-objective/" class="md-footer__link md-footer__link--next" aria-label="Next: Objective" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Objective
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2945,10 +3319,11 @@ Parameters(conf).to_config() == conf</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.289a2a4b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fc8c2696.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
